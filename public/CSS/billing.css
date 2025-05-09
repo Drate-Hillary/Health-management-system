@@ -1,0 +1,307 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+:root{
+    --sidebar-bg: #fff;
+    --white-color: #f4f5f0;
+    --sidebar-a-color:  #eceded;
+    --font-color: #0e0c0a;
+    --box-shadow: rgba(5, 3, 1, 0.15);
+    --card-bg: #fdfcfc;
+    --border-color: rgba(5, 3, 1, 0.2);
+    --hover-button-bg: #27251f;
+    --box-shadwow-strong: rgba(5, 3, 1, 0.5);
+    --reddish-color: #dc3545;
+    --greenish-color: #4ade80;
+    --color-red-400: oklch(70.4% 0.191 22.216);
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    background-color: var(--white-color);
+}
+
+/* Billing */
+h1{
+    margin-top: -0.2rem;
+    font-size: 2rem;
+}
+
+.billing-container {
+    background-color: var(--sidebar-bg);
+    padding: 8px;
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    min-height: 100%;
+}
+
+.billing-container .billing-summary {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    padding: clamp(8px, 8vw, 13px);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.billing-container .billing-summary h3 {
+    font-size: clamp(1rem, 2.5rem, 1.2rem);
+}
+
+.billing-container .billing-summary p {
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+}
+
+.billing-container .billing-summary #total-balance {
+    font-weight: 600;
+    background: var(--reddish-color);
+    padding: 0.2rem;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.billing-container .billing-invoices{
+    margin-top: 0.8rem;
+}
+
+.billing-container .billing-invoices h2 {
+    font-size: clamp(1.1rem, 3vw, 1.3rem);
+}
+
+.billing-container .billing-invoices .invoice-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #f2f9fe;
+    border-radius: 8px;
+    overflow: hidden;
+    font-size: clamp(0.85rem, 2vw, 1rem);
+    position: relative;
+    table-layout: fixed;
+}
+
+.billing-container .billing-invoices .invoice-table th,
+.billing-container .billing-invoices .invoice-table td {
+    padding: clamp(8px, 1.5vw, 12px);
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.billing-container .billing-invoices .invoice-table th {
+    background: #96c7fc;
+    font-size: clamp(0.9rem, 2vw, 1rem);
+}
+
+.billing-container .billing-invoices .invoice-table tr:last-child td {
+    border-bottom: none;
+}
+
+.billing-container .billing-invoices .invoice-table button {
+    background: #28a745;
+    color: #fff;
+    border: none;
+    padding: clamp(6px, 1.5vw, 8px) clamp(12px, 2vw, 16px);
+    border-radius: 4px;
+    font-size: clamp(0.8rem, 1.8vw, 0.9em);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.4s ease;
+    touch-action: manipulation;
+}
+
+.billing-container .billing-invoices .invoice-table button#bg-red{
+    background-color: var(--color-red-200);
+    color: var(--sidebar-bg);
+}
+
+.billing-container .billing-invoices .invoice-table button:hover {
+    background-color: #218838;
+}
+
+.billing-container .payment-method {
+    background: #fff;
+    border-radius: 8px;
+    padding: clamp(15px, 2vw, 20px);
+    margin-top: 2rem;
+    width: clamp(200px, 30vw, 300px);
+    position: absolute;
+    top: 0;
+    bottom: 0.5rem;
+    right: 2rem;
+    box-shadow: 0 3px 4px var(--box-shadwow-strong);
+    display: none;
+    z-index: 1000;
+}
+
+.billing-container .payment-method h3 {
+    margin: 0 0 1rem;
+    font-size: clamp(1rem, 2.2vw, 1.1rem);
+}
+
+.billing-container .payment-method form {
+    display: flex;
+    flex-direction: column;
+}
+
+.billing-container .payment-method form span{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.billing-container .payment-method form span .input-wrapper {
+    display:flex;
+    flex-direction: column;
+}
+
+.billing-container .payment-method form span .input-wrapper label {
+    display: inline-flex;
+    align-items: start;
+    font-size: clamp(0.8rem, 1.8vw, 0.9rem);
+    font-weight: 600;
+}
+
+.billing-container .payment-method form span .input-wrapper input {
+    padding: clamp(6px, 15vw, 8px);
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: clamp(0.75rem, 1.7vw, 0.8em);
+    transition: border-color 0.3s ease;
+}
+
+.billing-container .payment-method form span .input-wrapper input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.billing-container .payment-method form .btns {
+    display: flex;
+    align-items: center;
+    place-content: center;
+    gap: 1rem;
+    margin-top: 0.6rem;
+}
+
+.billing-container .payment-method form .btns button {
+    padding: clamp(8px, 1.5vw, 10px);
+    border-radius: 4px;
+    background-color: var(--font-color);
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    color: #fff;
+    flex: 1;
+    font-size: clamp(0.8rem, 1.8vw, 0.9rem);
+}
+
+.billing-container .payment-method form .btns button:hover {
+    background-color: var(--hover-button-bg);
+}
+
+.billing-container .payment-method form .btns button[type="button"] {
+    background: var(--sidebar-bg);
+    border: 1px solid var(--border-color);
+    color: var(--font-color);
+}
+
+.billing-container .payment-method form .btns button[type="button"]:hover {
+    background-color: rgba(238, 238, 238, 0.6);
+}
+
+@media (max-width: 768px) {
+
+    .billing-container {
+        margin: 1vh 1vw;
+        padding: 0;
+    }
+
+    .billing-summary {
+        padding: clamp(6px, 1.3vw, 8px);
+    }
+
+    .billing-summary h3 {
+        font-size: clamp(0.9rem, 2.2vw, 1rem);
+    }
+
+    .billing-summary p {
+        font-size: clamp(0.8rem, 2.2vw, 1rem);
+    }
+
+    .invoice-table{
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+
+    .billing-container .billing-invoices .invoice-table th,
+    .billing-container .billing-invoices .invoice-table td{
+        font-size: clamp(0.75rem, 1.8vw, 0.85rem);
+    }
+
+    .invoice-table button{
+        padding: clamp(5px, 1.2vw, 6px);
+        font-size: clamp(0.7rem, 1.7vw, 0.8rem);
+    }
+
+    .billing-container .payment-method{
+        width: 300px;
+    }
+
+}
+
+@media (max-width: 480px) {
+    .billing-container{
+        margin: 0;
+        padding: 0 0.5vw;
+    }
+
+    .billing-summary{
+        padding: clamp(6px, 1.2vw, 10px);
+    }
+
+    .billing-invoices .invoice-table{
+        width: 100%;
+        height: 100%;
+        font-size: clamp(0.7rem, 1.7vw, 0.8rem);
+    }
+
+    .invoice-table th, .invoice-table td{
+        padding: clamp(5px, 1vw, 8px);
+    }
+
+    .invoice-table th{
+        font-size: clamp(0.8rem, 1.8vw, 0.9rem);
+    }
+
+    .invoice-table button{
+        padding: clamp(4px, 1vw, 5px) clamp(8px, 1.5vw, 10px);
+    }
+
+    .payment-method{
+        padding: clamp(10px, 1.8vw, 12px);
+        max-width: 100%;
+        margin: 1rem;
+        margin-left: auto;
+    }
+
+    .payment-method form .input-wrapper input{
+        padding: clamp(5px, 1.2vw, 6px);
+        font-size: clamp(0.7rem, 1.6vw, 0.75rem);
+    }
+
+    .payment-method form .btns button{
+        padding: clamp(6px, 1.2vw, 8px);
+        font-size: clamp(0.75rem, 1.7vw, 0.85rem);
+    }
+
+}

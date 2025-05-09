@@ -1,0 +1,234 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+:root {
+    --sidebar-bg: #fff;
+    --white-color: #f4f5f0;
+    --sidebar-a-color: #eceded;
+    --font-color: #0e0c0a;
+    --box-shadow: rgba(5, 3, 1, 0.15);
+    --card-bg: #fdfcfc;
+    --border-color: rgba(5, 3, 1, 0.2);
+    --hover-button-bg: #27251f;
+    --reddish-color: #dc3545;
+    --greenish-color: rgba(211, 250, 209, 0.7);
+    --primary-btn-bg: #8bf898;
+    --primary-btn-hover: #218838;
+    --color-red-200: oklch(88.5% 0.062 18.334);
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    background-color: var(--white-color);
+}
+
+.msg {
+    background-color: var(--greenish-color);
+    color: var(--font-color);
+    padding: clamp(10px, 1.5vw, 15px);
+    border-radius: 5px;
+    font-size: clamp(0.7rem, 1.4vw, 0.9rem);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem auto;
+    max-width: 600px;
+    font-weight: 600;
+}
+
+.msg.bg-red-200 {
+    background-color: var(--color-red-200) /* oklch(88.5% 0.062 18.334) */;
+}
+
+/* Appointment Form */
+#appointment-form {
+    width: 100%;
+    max-width: 600px;
+    padding: clamp(15px, 2vw, 20px);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px var(--box-shadow);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 0 auto;
+    border: none;
+}
+
+#appointment-form .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+#appointment-form label {
+    font-size: clamp(0.9rem, 1.8vw, 1rem);
+    font-weight: 600;
+    color: var(--font-color);
+}
+
+#appointment-form select,
+#appointment-form input {
+    padding: clamp(8px, 1.5vw, 10px);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: clamp(0.85rem, 1.7vw, 0.9rem);
+    transition: border-color 0.3s ease;
+}
+
+#appointment-form select:focus,
+#appointment-form input:focus {
+    border-color: 2px solid var(--font-color);
+    outline: none;
+}
+
+#appointment-form .date-time {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    flex-wrap: wrap;
+    border: none;
+}
+
+#appointment-form .date-time .input {
+    flex: 1;
+    min-width: 150px;
+}
+
+#appointment-form .submit-btn {
+    color: var(--font-color);
+    border: 1px solid #ddd;
+    padding: clamp(10px, 1.5vw, 12px);
+    border-radius: 4px;
+    font-size: clamp(0.9rem, 1.8vw, 1rem);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#appointment-form .submit-btn:hover {
+    background: var(--white-color);
+}
+
+/* Appointment List */
+#appointment-list {
+    list-style: none;
+    margin-top: 20px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#appointment-list li {
+    padding: clamp(10px, 1.5vw, 12px);
+    background-color: var(--card-bg);
+    margin-bottom: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid var(--border-color);
+    font-size: clamp(0.85rem, 1.7vw, 0.9rem);
+    transition: transform 0.2s ease;
+}
+
+#appointment-list li:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 4px var(--box-shadow);
+}
+
+#appointment-list li .cancel-btn {
+    background-color: var(--reddish-color);
+    color: #fff;
+    padding: clamp(6px, 1vw, 8px) clamp(12px, 1.5vw, 16px);
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: clamp(0.8rem, 1.6vw, 0.85rem);
+    transition: background-color 0.3s ease;
+}
+
+#appointment-list li .cancel-btn:hover {
+    background-color: #c0392b;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .msg{
+        margin: 1rem;
+        padding: clamp(8px, 1.2vw, 10px);
+        font-size: clamp(0.8rem, 1.6vw, 0.9rem);
+    }
+
+    #appointment-form {
+        padding: clamp(10px, 1.5vw, 15px);
+        max-width: 100%;
+        margin: 0 1rem;
+    }
+
+    #appointment-form .date-time {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    #appointment-form .date-time .form-group {
+        min-width: 100%;
+    }
+
+    #appointment-list {
+        margin: 0 1rem;
+    }
+
+    #appointment-list li {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+        padding: clamp(8px, 1.2vw, 10px);
+    }
+
+    #appointment-list li .cancel-btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .msg{
+        margin: 0.5rem;
+        font-size: clamp(0.8rem, 1.6vw, 0.85rem);
+    }
+    #appointment-form {
+        margin: 0 0.5rem;
+        padding: clamp(8px, 1.2vw, 12px);
+    }
+
+    #appointment-form label {
+        font-size: clamp(0.85rem, 1.7vw, 0.9rem);
+    }
+
+    #appointment-form select,
+    #appointment-form input {
+        padding: clamp(6px, 1.2vw, 8px);
+        font-size: clamp(0.8rem, 1.6vw, 0.85rem);
+    }
+
+    #appointment-form .submit-btn {
+        padding: clamp(8px, 1.2vw, 10px);
+        font-size: clamp(0.85rem, 1.7vw, 0.9rem);
+    }
+
+    #appointment-list li {
+        font-size: clamp(0.8rem, 1.6vw, 0.85rem);
+    }
+
+    #appointment-list li .cancel-btn {
+        padding: clamp(5px, 1vw, 6px) clamp(10px, 1.5vw, 12px);
+        font-size: clamp(0.75rem, 1.5vw, 0.8rem);
+    }
+}

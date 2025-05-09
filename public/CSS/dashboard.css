@@ -1,0 +1,179 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+:root{
+    --sidebar-bg: #fff;
+    --white-color: #f4f5f0;
+    --sidebar-a-color:  #eceded;
+    --font-color: #0e0c0a;
+    --box-shadow: rgba(5, 3, 1, 0.15);
+    --card-bg: #fdfcfc;
+    --border-color: rgba(5, 3, 1, 0.2);
+    --hover-button-bg: #27251f;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    background-color: var(--white-color);
+}
+
+h1 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+/* Dashboard Grid */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 2rem;
+}
+
+.card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 6px #d1d2d2;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px #b0b0b0;
+}
+
+.card h3 {
+    margin-bottom: 10px;
+    color: #2c3e50;
+    font-size: 1.1rem;
+}
+
+.card .span-section{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 8px;
+    padding-left: 30px;
+}
+
+.card .span-section img{
+    width: 65px;
+    height: 65px;
+    margin-left: -10px;
+    object-fit: cover;
+    aspect-ratio: 1/1;   
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+.card .span-section img:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.card p{
+    padding: 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.card p span{
+    display: flex;
+    flex-direction: row;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.card p span .span2{
+    margin-left: 10px;
+    font-size: clamp(0.75rem, 1.8vw, 0.9rem);
+    color: #06c154;
+    border-bottom: 1px solid #b0b0b0;
+}
+
+.card button {
+    margin-top: 5px;
+    border: 1px solid var(--border-color);
+    color: var(--white-color);
+    color: var(--font-color);
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.card button:hover {
+    background-color: var(--box-shadow);
+}
+
+/* Appointment List */
+#appointment-list {
+    list-style: none;
+    margin-top: 20px;
+    transition: transform 0.3s ease;
+}
+
+#appointment-list:hover{
+    transform: scale(1.01);
+}
+
+#appointment-list li {
+    padding: 10px;
+    background-color: #ecf0f1;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #a9cee6;
+}
+
+#appointment-list li button {
+    background-color: #e74c3c;
+    padding: 5px;
+    width: 110px;
+    height: 30px;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+#appointment-list li button:hover {
+    background-color: #c0392b;
+}
+
+#appointment-form{
+    width: 100%;
+    border: solid;
+    display: flex;
+    justify-content: center;
+}
+
+#appointment-form .date-time {
+    border: solid;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    place-items: center;
+}
+
+#appointment-form .date-time .input{
+    display: flex;
+    flex-direction: column;
+}
