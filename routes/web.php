@@ -26,3 +26,7 @@ Route::get('/partials/billing', function(){
     return view('partials.billing');
 })->name('/partials/billing');
 
+Route::get('/partials/records', function(){
+    return view('partials.records');
+})->name('/partials/records');
+

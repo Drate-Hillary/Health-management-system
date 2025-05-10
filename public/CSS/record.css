@@ -1,0 +1,415 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+:root {
+    --sidebar-bg: #fff;
+    --white-color: #f4f5f0;
+    --sidebar-a-color: #eceded;
+    --font-color: #0e0c0a;
+    --box-shadow: rgba(5, 3, 1, 0.15);
+    --card-bg: #fdfcfc;
+    --border-color: rgba(5, 3, 1, 0.2);
+    --hover-button-bg: #27251f;
+    --reddish-color: #dc3545;
+    --greenish-color: #4ade80;
+    --primary-btn-bg: #28a745;
+    --primary-btn-hover: #218838;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    background-color: var(--white-color);
+}
+
+.records-container {
+    margin-top: 1.5rem; /* Use rem for scalability */
+    padding: 0 1rem; /* Add padding for mobile */
+}
+
+/* Tabs Navigation */
+.records-tabs {
+    display: flex;
+    flex-wrap: wrap; /* Allow tabs to wrap on small screens */
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    justify-content: center; /* Center tabs on mobile */
+}
+
+.records-tabs .tab {
+    padding: 0.6rem 1.2rem;
+    border: none;
+    background: #f1f1f1;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: clamp(0.9rem, 2.5vw, 1rem); /* Responsive font size */
+    flex: 1; /* Equal width for tabs */
+    min-width: 100px; /* Minimum width for touch targets */
+    text-align: center;
+    transition: background 0.3s, color 0.3s;
+}
+
+.records-tabs .tab.active {
+    background: #d9e7f6;
+    color: var(--font-color);
+}
+
+.record-tab {
+    display: none;
+}
+
+.record-tab.active {
+    display: block;
+}
+
+/* Medical History Table */
+.records-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 0.75rem;
+    font-size: clamp(0.85rem, 2.5vw, 0.95rem); /* Responsive font size */
+}
+
+.records-table th,
+.records-table td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.records-table th {
+    background: #f8f9fa;
+    font-weight: bold;
+}
+
+/* Responsive Table for Mobile */
+@media (max-width: 600px) {
+    .records-table {
+        display: block;
+        overflow-x: auto; /* Enable horizontal scrolling */
+        white-space: nowrap; /* Prevent text wrapping */
+    }
+
+    .records-table thead {
+        display: none; /* Hide headers on mobile */
+    }
+
+    .records-table tbody tr {
+        display: block;
+        margin-bottom: 1rem;
+        border-bottom: 2px solid #ddd;
+    }
+
+    .records-table tbody td {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.5rem;
+        position: relative;
+        text-align: right;
+    }
+
+    .records-table tbody td::before {
+        content: attr(data-label); /* Use data-label for mobile */
+        font-weight: bold;
+        text-align: left;
+        flex: 1;
+        padding-right: 0.5rem;
+    }
+}
+
+/* Lab Results Grid */
+.lab-results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr)); /* Responsive column width */
+    gap: 1rem;
+    margin-top: 0.75rem;
+}
+
+.lab-results-grid .card {
+    padding: 1.25rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.lab-results-grid .card h3 {
+    margin-top: 0;
+    font-size: clamp(1rem, 3vw, 1.125rem);
+}
+
+.lab-results-grid .card p {
+    margin: 0.5rem 0;
+    font-size: clamp(0.75rem, 2.3vw, 0.85rem);
+}
+
+.lab-results-grid .card button {
+    padding: 0.5rem 1rem;
+    background: #d9e7f6;
+    color: #0256b1;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+.lab-results-grid .card button:hover {
+    background: #d3e6fa;
+}
+
+/* Analytics Section */
+.analytics-container {
+    margin-top: 0.75rem;
+}
+
+.analytics-filter {
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap; /* Allow wrapping on small screens */
+    gap: 0.5rem;
+}
+
+.analytics-filter label {
+    margin-right: 0.5rem;
+    font-weight: bold;
+    font-size: clamp(0.9rem, 2.5vw, 1rem);
+}
+
+.analytics-filter select {
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+    width: 100%; /* Full-width on mobile */
+    max-width: 200px; /* Limit width on larger screens */
+}
+
+/* Charts Grid */
+.charts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+}
+
+.chart-card {
+    padding: 1.25rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.chart-card h3 {
+    margin-top: 0;
+    font-size: clamp(1rem, 3vw, 1.125rem);
+}
+
+.chart-card canvas {
+    max-height: 200px;
+    width: 100% !important; /* Ensure charts fit container */
+}
+
+/* Insights Section */
+.insights h3 {
+    margin-top: 0;
+    font-size: clamp(1rem, 3vw, 1.125rem);
+}
+
+.insights ul {
+    list-style: none;
+    padding: 0;
+}
+
+.insights li {
+    padding: 0.75rem;
+    margin-bottom: 0.75rem;
+    border-radius: 5px;
+    background: #f8f9fa;
+    font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+}
+
+.insights .alert {
+    background: #ffe5e5;
+    color: #d32f2f;
+}
+
+.insights i {
+    margin-right: 0.5rem;
+}
+
+/* Ensure sections are hidden by default */
+.section {
+    display: none;
+}
+
+.section.active {
+    display: block;
+}
+
+/* Media Queries for Additional Responsiveness */
+@media (max-width: 768px) {
+    .records-container {
+        padding: 0 0.5rem;
+    }
+
+    .records-tabs .tab {
+        padding: 0.5rem 1rem;
+        min-width: 80px;
+    }
+
+    .lab-results-grid .card {
+        padding: 1rem;
+    }
+
+    .chart-card {
+        padding: 1rem;
+    }
+
+    .chart-card canvas {
+        max-height: 150px; /* Smaller charts on tablets */
+    }
+}
+
+@media (max-width: 480px) {
+    .records-tabs {
+        flex-direction: column; /* Stack tabs vertically */
+        align-items: stretch;
+    }
+
+    .records-tabs .tab {
+        width: 100%;
+        padding: 0.5rem;
+    }
+
+    .analytics-filter select {
+        max-width: 100%; /* Full-width select on small screens */
+    }
+
+    .chart-card canvas {
+        max-height: 120px; /* Even smaller charts on mobile */
+    }
+
+    .insights li {
+        padding: 0.5rem;
+    }
+}
+
+/* Static Chart Styles */
+.static-chart {
+    position: relative;
+    height: 200px; /* Fixed height for consistency */
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.chart-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: clamp(0.7rem, 2vw, 0.8rem);
+    color: var(--font-color);
+    margin-top: 0.5rem;
+    text-align: center;
+}
+
+.chart-labels span {
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.chart-bars {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: 160px; /* Space for bars */
+    border-bottom: 1px solid var(--border-color);
+    position: relative;
+}
+
+.chart-bar {
+    flex: 1;
+    margin: 0 2px;
+    border-radius: 3px 3px 0 0;
+    transition: transform 0.2s ease;
+}
+
+.chart-bar:hover {
+    transform: scaleY(1.05);
+}
+
+.chart-bar.systolic {
+    background: var(--primary-btn-bg);
+}
+
+.chart-bar.diastolic {
+    background: var(--reddish-color);
+}
+
+.chart-bar.cholesterol {
+    background: var(--greenish-color);
+}
+
+.chart-bar.glucose {
+    background: #ffc107;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .static-chart {
+        height: 150px;
+    }
+
+    .chart-bars {
+        height: 120px;
+    }
+
+    .chart-labels {
+        font-size: clamp(0.65rem, 1.8vw, 0.75rem);
+    }
+}
+
+@media (max-width: 480px) {
+    .static-chart {
+        height: 120px;
+    }
+
+    .chart-bars {
+        height: 90px;
+    }
+
+    .chart-labels {
+        font-size: clamp(0.6rem, 1.5vw, 0.7rem);
+    }
+
+    .chart-labels span {
+        transform: rotate(-45deg);
+        transform-origin: center;
+        margin-top: 1rem;
+    }
+}
+
+/* Update existing .chart-card to remove canvas-specific styles */
+.chart-card {
+    padding: 1.25rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--card-bg);
+    box-shadow: 0 2px 4px var(--box-shadow);
+}
+
+/* Disable select functionality since no JS */
+.analytics-filter select {
+    pointer-events: none; /* Disable interaction */
+    opacity: 0.7; /* Indicate it's disabled */
+}

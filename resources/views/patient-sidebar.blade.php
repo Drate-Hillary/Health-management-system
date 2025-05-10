@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="{{ asset('CSS/billing.css') }}">
     <link rel="stylesheet" href="{{ asset('CSS/telemedicine.css') }}">
     <link rel="stylesheet" href="{{ asset('CSS/appointment.css') }}">
+    <link rel="stylesheet" href="{{ asset('CSS/record.css') }}">
+
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -45,7 +47,7 @@
             </li>
 
             <li>
-                <a href="#" onclick="showSection('records')">
+                <a href="{{ route('/partials/records') }}" class="{{ request()->routeIs('/partials/records') }}" onclick="showSection('records')">
                     <img src="{{ asset('img/records.svg') }}" alt=""> Health Records
                 </a>
             </li>
@@ -84,6 +86,11 @@
         @yield('content')
 
     </div>
+
+
+    <!-- External js -->
+    <script src="{{ asset('JS/app.js') }}"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </body>
 
