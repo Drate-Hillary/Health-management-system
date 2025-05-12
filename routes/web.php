@@ -30,3 +30,6 @@ Route::get('/partials/records', function(){
     return view('partials.records');
 })->name('/partials/records');
 
+Route::get('/partials/prescription', function(){
+    return view('partials.prescription');
+})->name('/partials/perscription');

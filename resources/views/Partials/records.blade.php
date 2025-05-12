@@ -53,13 +53,13 @@
                 <p><strong>Hemoglobin:</strong> 13.5 g/dL (Normal)</p>
                 <p><strong>Cholesterol:</strong> 220 mg/dL (High)</p>
                 <p><strong>Glucose:</strong> 110 mg/dL (Elevated)</p>
-                <button onclick="downloadReport('blood-test-2025-04-15.pdf')">Download Report</button>
+                <button><img src="{{ asset('img/download.svg') }}" alt="download"> Download Report</button>
             </div>
             <div class="card">
                 <h3>Imaging Report (10 Mar 2025)</h3>
                 <p><strong>Type:</strong> Chest X-Ray</p>
                 <p><strong>Findings:</strong> No abnormalities</p>
-                <button onclick="downloadReport('xray-2025-03-10.pdf')">Download Report</button>
+                <button><img src="{{ asset('img/download.svg') }}" alt="download"> Download Report</button>
             </div>
         </div>
     </div>
@@ -81,9 +81,9 @@
             <!-- Static Visualizations -->
             <div class="charts-grid">
                 <!-- Blood Pressure Visualization -->
-                <div class="chart-card">
+                <div class="chart-card full-width">
                     <h3>Blood Pressure Trend</h3>
-                    <div class="static-chart blood-pressure">
+                    <div class="static-chart">
                         <div class="chart-bars">
                             <!-- Systolic -->
                             <div class="chart-bar systolic" style="height: 60%;"></div>
@@ -111,7 +111,7 @@
                     </div>
                 </div>
                 <!-- Cholesterol Visualization -->
-                <div class="chart-card">
+                <div class="chart-card half-width">
                     <h3>Cholesterol Levels</h3>
                     <div class="static-chart">
                         <div class="chart-bars">
@@ -133,7 +133,7 @@
                     </div>
                 </div>
                 <!-- Blood Glucose Visualization -->
-                <div class="chart-card">
+                <div class="chart-card half-width">
                     <h3>Blood Glucose Levels</h3>
                     <div class="static-chart">
                         <div class="chart-bars">
@@ -159,9 +159,9 @@
             <div class="insights">
                 <h3>Health Insights</h3>
                 <ul>
-                    <li class="alert"><i class="fas fa-exclamation-triangle"></i> High cholesterol detected in last test (220 mg/dL).</li>
-                    <li><i class="fas fa-check-circle"></i> Blood pressure stable over the last 6 months.</li>
-                    <li><i class="fas fa-info-circle"></i> Monitor glucose levels closely due to elevated readings.</li>
+                    <li class="alert"><img src="{{ asset('img/warning.svg') }}" alt=""> High cholesterol detected in last test (220 mg/dL).</li>
+                    <li><img src="{{ asset('img/check.svg') }}" alt=""> Blood pressure stable over the last 6 months.</li>
+                    <li><img src="{{ asset('img/information.svg') }}" alt=""> Monitor glucose levels closely due to elevated readings.</li>
                 </ul>
             </div>
         </div>

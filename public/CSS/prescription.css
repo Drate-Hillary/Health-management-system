@@ -1,0 +1,144 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+:root{
+    --sidebar-bg: #fff;
+    --white-color: #f4f5f0;
+    --sidebar-a-color:  #eceded;
+    --font-color: #0e0c0a;
+    --box-shadow: rgba(5, 3, 1, 0.15);
+    --card-bg: #fdfcfc;
+    --border-color: rgba(5, 3, 1, 0.2);
+    --hover-button-bg: #27251f;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    background-color: var(--white-color);
+}
+
+/* Prescriptions Section */
+.prescriptions-container {
+    margin-top: 0.75rem;
+    padding: 1rem;
+}
+
+.prescription-card {
+    position: relative;
+    padding: 1.25rem;
+    border: 2px solid #4682b4; /* Blue sketch-like border */
+    border-radius: 5px;
+    background: var(--card-bg); /* Slightly transparent white to show lined background */
+    border-style: dashed; /* Hand-drawn effect */
+    width: 100%;
+}
+
+.prescription-card h3 {
+    margin-top: 0;
+    font-size: clamp(1rem, 3vw, 1.125rem);
+}
+
+/* Prescription Table */
+.prescription-table {
+    width: 100%;
+    margin-top: 0.75rem;
+}
+
+.prescription-table table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+}
+
+.prescription-table th,
+.prescription-table td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.prescription-table th {
+    background: #edf4f9;
+    font-weight: bold;
+    font-family: 'Caveat', cursive; /* Handwritten font for headers */
+    color: #4682b4;
+}
+
+.prescription-table td {
+    color: var(--font-color);
+}
+
+.prescription-table .status.active {
+    color: var(--greenish-color);
+    font-weight: bold;
+}
+
+.prescription-table .status.discontinued {
+    color: var(--reddish-color);
+    font-weight: bold;
+}
+
+/* Responsive Table for Mobile */
+@media (max-width: 600px) {
+    .prescription-table table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .prescription-table thead {
+        display: none; /* Hide headers on mobile */
+    }
+
+    .prescription-table tbody tr {
+        display: block;
+        margin-bottom: 1rem;
+        border-bottom: 2px solid #ddd;
+    }
+
+    .prescription-table tbody td {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.5rem;
+        position: relative;
+        text-align: right;
+    }
+
+    .prescription-table tbody td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        text-align: left;
+        flex: 1;
+        padding-right: 0.5rem;
+    }
+
+    /* Add data-label attributes to td elements for mobile */
+    .prescription-table td:nth-child(1)::before { content: "Medication"; }
+    .prescription-table td:nth-child(2)::before { content: "Dosage"; }
+    .prescription-table td:nth-child(3)::before { content: "Frequency"; }
+    .prescription-table td:nth-child(4)::before { content: "Start Date"; }
+    .prescription-table td:nth-child(5)::before { content: "Status"; }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .prescription-card {
+        padding: 1rem;
+    }
+
+    .prescription-table th,
+    .prescription-table td {
+        padding: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .prescription-table {
+        font-size: clamp(0.75rem, 2.3vw, 0.85rem);
+    }
+}

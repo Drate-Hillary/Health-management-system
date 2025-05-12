@@ -16,9 +16,10 @@
     --hover-button-bg: #27251f;
     --reddish-color: #dc3545;
     --greenish-color: rgba(211, 250, 209, 0.7);
-    --primary-btn-bg: #8bf898;
+    --primary-btn-bg: #c2f8c9;
     --primary-btn-hover: #218838;
     --color-red-200: oklch(88.5% 0.062 18.334);
+    --color-green-200: oklch(92.5% 0.084 155.995);
 }
 
 body {
@@ -28,7 +29,7 @@ body {
 }
 
 .msg {
-    background-color: var(--greenish-color);
+    background-color: var(--color-green-200);
     color: var(--font-color);
     padding: clamp(10px, 1.5vw, 15px);
     border-radius: 5px;
@@ -39,6 +40,7 @@ body {
     margin: 1rem auto;
     max-width: 600px;
     font-weight: 600;
+    display: none;
 }
 
 .msg.bg-red-200 {

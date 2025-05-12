@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="{{ asset('CSS/telemedicine.css') }}">
     <link rel="stylesheet" href="{{ asset('CSS/appointment.css') }}">
     <link rel="stylesheet" href="{{ asset('CSS/record.css') }}">
-
+    <link rel="stylesheet" href="{{ asset('CSS/prescription.css') }}">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -35,38 +35,37 @@
             </li>
 
             <li>
-                <a href="{{ route('/partials/profile') }}" class="{{ request()->routeIs('/partials/profile') }}" >
+                <a href="{{ route('/partials/profile') }}" class="{{ request()->routeIs('/partials/profile') ? 'active' : ''}}" >
                     <img src="{{ asset('img/user.svg') }}" alt=""> Profile
                 </a>
             </li>
 
             <li>
-                <a href="{{ route('/partials/appointment') }}" class="{{ request()->routeIs('/partial/appointment') }}">
+                <a href="{{ route('/partials/appointment') }}" class="{{ request()->routeIs('/partial/appointment') ? 'active' : '' }}">
                     <img src="{{ asset('img/calendar.svg') }}" alt=""> Appointments
                 </a>
             </li>
 
             <li>
-                <a href="{{ route('/partials/records') }}" class="{{ request()->routeIs('/partials/records') }}" onclick="showSection('records')">
+                <a href="{{ route('/partials/records') }}" class="{{ request()->routeIs('/partials/records') ? 'active' : '' }}" >
                     <img src="{{ asset('img/records.svg') }}" alt=""> Health Records
                 </a>
             </li>
 
             <li>
-                <a href="#" onclick="showSection('prescriptions')">
-                    <img src="{{ asset('img/prescription.svg') }}" alt="">
-                    Prescriptions
+                <a href="{{ route('/partials/perscription') }}" class="{{ request()->routeIs('/partials/prescription') ? 'active' : '' }}" >
+                    <img src="{{ asset('img/prescription.svg') }}" alt=""> Prescriptions
                 </a>
             </li>
 
             <li>
-                <a href="{{ route('/partials/billing') }}" class="{{ request()->routeIs('/partials/billing') }}" >
+                <a href="{{ route('/partials/billing') }}" class="{{ request()->routeIs('/partials/billing') ? 'active' : '' }}" >
                     <img src="{{ asset('img/creditCard.svg') }}" alt=""> Billing
                 </a>
             </li>
 
             <li>
-                <a href="{{ route('/partials/telemedicine') }}" class="{{ request()->routeIs('/partials/telemedicine') }}" >
+                <a href="{{ route('/partials/telemedicine') }}" class="{{ request()->routeIs('/partials/telemedicine') ? 'active' : '' }}" >
                     <img src="{{ asset('img/message.svg') }}" alt=""> Telemedicine
                 </a>
             </li>

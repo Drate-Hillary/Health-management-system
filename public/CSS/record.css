@@ -150,13 +150,21 @@ body {
 .lab-results-grid .card button {
     padding: 0.5rem 1rem;
     background: #d9e7f6;
-    color: #0256b1;
+    color: #012347;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: clamp(0.85rem, 2.5vw, 0.95rem);
     width: 100%;
     margin-top: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.lab-results-grid .card button img{
+    height: 0.95rem;
+    width: 0.95rem;
 }
 
 .lab-results-grid .card button:hover {
@@ -193,22 +201,34 @@ body {
 
 /* Charts Grid */
 .charts-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+    display: flex;
+    flex-wrap: wrap;
     gap: 1rem;
     margin-bottom: 1.25rem;
 }
 
 .chart-card {
-    padding: 1.25rem;
+    position: relative;
+    padding: 1.2rem;
     border: 1px solid #ddd;
     border-radius: 8px;
     background: white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+.chart-card.full-width {
+    flex: 0 0 100%;
+    min-height: 200px; /* Adjust height as needed */
+}
+
+.chart-card.half-width {
+    flex: 0 0 calc(50% - 0.5rem); /* Two cards side by side with gap */
+    min-height: 150px; /* Smaller height for these charts */
+}
+
 .chart-card h3 {
     margin-top: 0;
+    font-family: 'Caveat', cursive; 
     font-size: clamp(1rem, 3vw, 1.125rem);
 }
 
@@ -229,6 +249,8 @@ body {
 }
 
 .insights li {
+    display: flex;
+    align-items: center;
     padding: 0.75rem;
     margin-bottom: 0.75rem;
     border-radius: 5px;
@@ -239,10 +261,14 @@ body {
 .insights .alert {
     background: #ffe5e5;
     color: #d32f2f;
+    display: flex;
+    align-items: center;
 }
 
-.insights i {
+.insights img {
     margin-right: 0.5rem;
+    font-size: 1rem;
+    fill: #d32f2f;
 }
 
 /* Ensure sections are hidden by default */
