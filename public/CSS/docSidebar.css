@@ -23,7 +23,6 @@ body {
     background-color: var(--white-color);
 }
 
-/* Hamburger Menu */
 .hamburger {
     display: none;
     position: fixed;
@@ -38,71 +37,109 @@ body {
     border-radius: 5px;
 }
 
-.hamburger:hover{
-    background-color: var(--card-bg);
+.logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 3px;
+    margin-top: -5px;
+}
+
+.logo h2 {
+    font-size: 24px;
+}
+
+.logo img{
+    height: 80px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
 }
 
 /* Sidebar */
 .sidebar {
     width: 250px;
-    background-color: var(--sidebar-bg);
+    background-color:var(--sidebar-bg);
     color: var(--font-color);
     padding: 20px;
     position: fixed;
     height: 100%;
-    box-shadow: 0 3px 6px var(--box-shadow);
-    transition: transform 0.3s ease;
+    box-shadow: 0 2px 4px var(--box-shadow-strong);
     z-index: 100;
-}
-
-.logo h2 {
-    margin-bottom: 30px;
-    font-size: 1.4rem;
+    transition: transform 0.3s ease;
 }
 
 .sidebar ul {
     list-style: none;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin-top: 1rem;
+}
+
+.sidebar .scrollable{
+    flex: 0 1 auto;
+    max-height: 280px;
+    overflow-y: auto;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.sidebar .scrollable::-webkit-scrollbar {
+    width: 4px;
+}
+
+.sidebar .scrollable::-webkit-scrollbar-track {
+    background-color: var(--color-gray-400);
+    border-radius: 10px;
+}
+
+.sidebar .scrollable::-webkit-scrollbar-thumb {
+    background: #ebebeb;
+    border-radius: 10px;
+}
+
+.sidebar .scrollable:hover, .sidebar .scrollable:active{
+    box-shadow: 0 2px 4px var(--box-shadow);
 }
 
 .sidebar ul li {
-    margin: 8px 0;
+    margin: 5px 0;
 }
 
 .sidebar ul li a {
-    color: var(--font-color);
     text-decoration: none;
     display: flex;
-    font-weight: 500;
     align-items: center;
+    gap: 10px;
     padding: 10px;
     border-radius: 5px;
+    color: var(--font-color);
 }
 
-.sidebar ul li a img {
+.sidebar ul li .logout{
+    margin-top: 0.5rem;
+    color: var(--sidebar-bg);
+    background-color: var(--font-color);
+    transition: background-color 0.4s ease;
+}
+
+.sidebar ul li .logout img{
+    background-color: var(--card-bg);
+    border-radius: 50%;
+    padding: 2px;
+}
+
+.sidebar ul li .logout:hover{
+    background-color: var(--hover-button-bg);
+}
+
+.sidebar ul li a i {
     margin-right: 10px;
 }
 
-.sidebar ul li a:hover,
-.sidebar ul li a.active {
+.sidebar ul li a:hover, .sidebar ul li a.active {
     background-color: var(--sidebar-a-color);
-}
-
-.sidebar ul li .logout {
-    background: var(--font-color);
-    color: var(--white-color);
-    place-content: center;
-    display: flex;
-    gap: 0.3rem;
-}
-
-.sidebar ul li .logout img {
-    background-color: var(--white-color);
-    border-radius: 50%;
-    padding: 0.2rem;
-}
-
-.sidebar ul li .logout:hover {
-    background-color: var(--hover-button-bg);
 }
 
 /* Main Content */

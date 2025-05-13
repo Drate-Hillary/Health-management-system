@@ -37,7 +37,7 @@
     Appointment cancelled successfully!
 </div>
 <ul id="appointment-list">
-    <li>Dr. Smith - 25 Apr 2025, 10:00 AM <button onclick="cancelAppointment(this)">Cancel</button></li>
+    <li>Dr. Smith - 25 Apr 2025, 10:00 AM <button>Cancel</button></li>
 </ul>
 
 @endsection

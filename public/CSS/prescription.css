@@ -73,6 +73,10 @@ body {
     color: var(--font-color);
 }
 
+.prescription-table td:last-child{
+    border-collapse: collapse;
+}
+
 .prescription-table .status.active {
     color: var(--greenish-color);
     font-weight: bold;
