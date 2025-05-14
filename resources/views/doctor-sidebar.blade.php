@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{{ asset('CSS/appoint.css') }}">
     <link rel="stylesheet" href="{{ asset('CSS/profile.css') }}">
     <link rel="stylesheet" href="{{ asset('CSS/patientrecord.css') }}">
+    <link rel="stylesheet" href="{{ asset('CSS/docprescription.css') }}">
 
 </head>
 <body>
@@ -34,7 +35,7 @@
 
                 <li>
                     <a href="{{ route('/doctor-partials/patient-records') }}" class="{{ request()->routeIs('/doctor-partials/patient-rcords') ? 'active' : '' }}">
-                        <img src="{{ asset('img/records.svg') }}" alt=""> Patient Records
+                        <img src="{{ asset('img/records.svg') }}" alt=""> <span>Patient Records</span>
                     </a>
                 </li>
 
@@ -45,7 +46,7 @@
                 </li>
 
                 <li>
-                    <a href="#" onclick="showSection('prescriptions')">
+                    <a href="{{ route('/doctor-partials/prescription') }}" class="{{ request()->routeIs('/doctor-partials/prescription') ? 'active' : '' }}">
                         <img src="{{ asset('img/prescription.svg') }}" alt=""> <span>Prescriptions</span>
                     </a>
                 </li>
@@ -57,7 +58,7 @@
                 </li>
 
                 <li>
-                    <a href="#" onclick="showSection('reporting')">
+                    <a href="{{ route('/doctor-partials/reporting') }}" class="{{ request()->routeIs('/doctor-partials/reporting') ? 'active' : '' }}" >
                         <img src="{{ asset('img/report.svg') }}" alt=""> <span>Reporting</span>
                     </a>
                 </li>

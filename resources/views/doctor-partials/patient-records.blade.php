@@ -16,6 +16,7 @@
 </div>
 
 <div class="patient-details">
+    
     <h2>Patient: John Doe</h2>
     <p><strong>ID:</strong> P12345</p>
     <p><strong>Age:</strong> 35</p>
