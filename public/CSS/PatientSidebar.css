@@ -87,18 +87,33 @@ body {
     background-color: var(--sidebar-a-color);
 }
 
-.sidebar ul li .logout {
-    background: var(--font-color);
-    color: var(--white-color);
-    place-content: center;
-    display: flex;
-    gap: 0.3rem;
+.sidebar ul li form {
+    width: 100%;
 }
 
-.sidebar ul li .logout img {
+.sidebar ul li form .logout {
+    width: 100%;
+    display: flex;
+    padding: 5px;
+    align-items: center;
+    background: var(--font-color);
+    color: var(--white-color);
+    gap: 0.5rem;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.sidebar ul li form .logout span{
+    font-weight: 600;
+}
+
+.sidebar ul li form .logout img {
     background-color: var(--white-color);
     border-radius: 50%;
     padding: 0.2rem;
+    margin-left: 10px;
 }
 
 .sidebar ul li .logout:hover {

@@ -1,49 +1,57 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\Auth\LoginController;
+use Illuminate\Support\Facades\Route;
 
-Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [LoginController::class, 'login']);
+Route::get('/', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/', [LoginController::class, 'login']);
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-// patient's routes
-Route::middleware('role:patient')->group(function () {
+//Patients routes
+Route::middleware(['auth:patient'])->group(function () {
 
-    Route::get('/partials/dashboard', function () {
-        return view('partials.dashboard');
-    })->name('/partials/dashboard');
+    Route::get('/patients/dashboard', function () {
+        return view('partials.dashboard', [
+            'user' => auth('patient')->user()
+        ]);
+    })->name('/patients/dashboard');
 
-    Route::get('/partials/profile', function () {
+    Route::get('/patients/profile', function () {
         return view('partials.profile');
-    })->name('/partials/profile');
+    })->name('/patients/profile');
 
-    Route::get('/partials/Telemedicine', function () {
+    Route::get('/patients/Telemedicine', function () {
         return view('partials.telemedicine');
-    })->name('/partials/telemedicine');
+    })->name('/patients/telemedicine');
 
-    Route::get('/partials/appointment', function () {
+    Route::get('/patients/appointment', function () {
         return view('partials.appointment');
-    })->name('/partials/appointment');
+    })->name('/patients/appointment');
 
-    Route::get('/partials/billing', function () {
+    Route::get('/patients/billing', function () {
         return view('partials.billing');
-    })->name('/partials/billing');
+    })->name('/patients/billing');
 
-    Route::get('/partials/records', function () {
+    Route::get('/patients/records', function () {
         return view('partials.records');
-    })->name('/partials/records');
+    })->name('/patients/records');
 
-    Route::get('/partials/prescription', function () {
+    Route::get('/patients/prescription', function () {
         return view('partials.prescription');
-    })->name('/partials/perscription');
+    })->name('/patients/prescription');
 });
 
 
+
 // Doctor's routes
-Route::middleware('role:doctor')->group(function () {
+Route::middleware(['auth:doctor'])->group(function () {
 
     Route::get('/doctor-partials/dashboard', function () {
-        return view('doctor-partials.dashboard');
+        return view(
+            'doctor-partials.dashboard',
+            ['user' => auth('doctor')->user()],
+        );
     })->name('/doctor-partials/dashboard');
 
     Route::get('/doctor-partials/appointment', function () {
@@ -69,4 +77,5 @@ Route::middleware('role:doctor')->group(function () {
     Route::get('/doctor-partials/reporting', function () {
         return view('doctor-partials.reporting');
     })->name('/doctor-partials/reporting');
+
 });

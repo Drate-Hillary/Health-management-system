@@ -15,6 +15,7 @@
     --card-bg: #fdfcfc;
     --border-color: rgba(5, 3, 1, 0.2);
     --hover-button-bg: #27251f;
+    --color-blue-700: oklch(48.8% 0.243 264.376);
 }
 
 body {
@@ -47,7 +48,9 @@ body {
 }
 
 .logo h2 {
-    font-size: 24px;
+    margin-top: -5px;
+    font-size: 18px;
+    color: var(--color-blue-700);
 }
 
 .logo img{
@@ -105,6 +108,7 @@ body {
 
 .sidebar ul li {
     margin: 5px 0;
+    cursor: pointer;
 }
 
 .sidebar ul li a {
@@ -117,17 +121,34 @@ body {
     color: var(--font-color);
 }
 
-.sidebar ul li .logout{
-    margin-top: 0.5rem;
-    color: var(--sidebar-bg);
-    background-color: var(--font-color);
-    transition: background-color 0.4s ease;
+.sidebar ul li form {
+    width: 100%;
+    margin-top: 5px;
 }
 
-.sidebar ul li .logout img{
-    background-color: var(--card-bg);
+.sidebar ul li form .logout {
+    width: 100%;
+    display: flex;
+    padding: 5px;
+    align-items: center;
+    background: var(--font-color);
+    color: var(--white-color);
+    gap: 0.5rem;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.sidebar ul li form .logout span{
+    font-weight: 600;
+}
+
+.sidebar ul li form .logout img {
+    background-color: var(--white-color);
     border-radius: 50%;
-    padding: 2px;
+    padding: 0.2rem;
+    margin-left: 10px;
 }
 
 .sidebar ul li .logout:hover{

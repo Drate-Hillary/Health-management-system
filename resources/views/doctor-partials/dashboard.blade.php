@@ -2,27 +2,35 @@
 
 @section('content')
 
-<h1>Welcome, Dr. [Doctor Name]</h1>
+<h1>Welcome, {{ Auth('doctor')->user()->name }}</h1>
 <div class="dashboard-grid">
     <div class="card">
         <h3>Today’s Appointments</h3>
         <p>5 Appointments Scheduled</p>
-        <button href="{{ route('/doctor-partials/appointment') }}" class="{{ request()->routeIs('/doctor-partials/appointment') }}">View Schedule</button>
+        <a href="{{ route('/doctor-partials/appointment') }}">
+            <button type="submit" >View Schedule</button>
+        </a>
     </div>
     <div class="card">
         <h3>Recent Patients</h3>
         <p>Last: John Doe, 15 Apr 2025</p>
-        <button onclick="showSection('patients')">View Records</button>
+        <a href="{{ route('/doctor-partials/patient-records') }}">
+            <button type="submit">View Records</button>
+        </a>
     </div>
     <div class="card">
         <h3>Prescriptions</h3>
         <p>Pending: 3 Prescriptions</p>
-        <button onclick="showSection('prescriptions')">Manage Prescriptions</button>
+        <a href="{{ route('/doctor-partials/prescription') }}">
+            <button type="submit" >Manage Prescriptions</button>
+        </a>
     </div>
     <div class="card">
         <h3>Messages</h3>
         <p>2 Unread Messages</p>
-        <button onclick="showSection('communication')">View Messages</button>
+        <a href="{{ route('/doctor-partials/telemedicine') }}">
+            <button type="submit" >View Messages</button>
+        </a>
     </div>
 </div>
 

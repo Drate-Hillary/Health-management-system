@@ -28,44 +28,47 @@
         </div>
         <ul>
             <li>
-                <a href="{{ route('/partials/dashboard') }}" class="{{ request()->routeIs('/partials/dashboard') ? 'active' : '' }}">
+                <a href="{{ route('/patients/dashboard') }}" class="{{ request()->routeIs('patients.dashboard') ? 'active' : '' }}">
                     <img src="{{ asset('img/dashboard.svg') }}" alt=""> <span>Dashboard</span>
                 </a>
             </li>
             <li>
-                <a href="{{ route('/partials/profile') }}" class="{{ request()->routeIs('/partials/profile') ? 'active' : '' }}">
+                <a href="{{ route('/patients/profile') }}" class="{{ request()->routeIs('partials.profile') ? 'active' : '' }}">
                     <img src="{{ asset('img/user.svg') }}" alt=""> <span>Profile</span>
                 </a>
             </li>
             <li>
-                <a href="{{ route('/partials/appointment') }}" class="{{ request()->routeIs('/partial/appointment') ? 'active' : '' }}">
+                <a href="{{ route('/patients/appointment') }}" class="{{ request()->routeIs('partial.appointment') ? 'active' : '' }}">
                     <img src="{{ asset('img/calendar.svg') }}" alt=""> <span>Appointments</span>
                 </a>
             </li>
             <li>
-                <a href="{{ route('/partials/records') }}" class="{{ request()->routeIs('/partials/records') ? 'active' : '' }}">
+                <a href="{{ route('/patients/records') }}" class="{{ request()->routeIs('partials.records') ? 'active' : '' }}">
                     <img src="{{ asset('img/records.svg') }}" alt=""> <span>Health Records</span>
                 </a>
             </li>
             <li>
-                <a href="{{ route('/partials/perscription') }}" class="{{ request()->routeIs('/partials/prescription') ? 'active' : '' }}">
+                <a href="{{ route('/patients/prescription') }}" class="{{ request()->routeIs('partials.prescription') ? 'active' : '' }}">
                     <img src="{{ asset('img/prescription.svg') }}" alt=""> <span>Prescriptions</span>
                 </a>
             </li>
             <li>
-                <a href="{{ route('/partials/billing') }}" class="{{ request()->routeIs('/partials/billing') ? 'active' : '' }}">
+                <a href="{{ route('/patients/billing') }}" class="{{ request()->routeIs('partials.billing') ? 'active' : '' }}">
                     <img src="{{ asset('img/creditCard.svg') }}" alt=""> <span>Billing</span>
                 </a>
             </li>
             <li>
-                <a href="{{ route('/partials/telemedicine') }}" class="{{ request()->routeIs('/partials/telemedicine') ? 'active' : '' }}">
+                <a href="{{ route('/patients/telemedicine') }}" class="{{ request()->routeIs('partials.telemedicine') ? 'active' : '' }}">
                     <img src="{{ asset('img/message.svg') }}" alt=""> <span>Telemedicine</span>
                 </a>
             </li>
             <li>
-                <a href="#" onclick="logout()" class="logout">
-                    <img src="{{ asset('img/logout.svg') }}" alt=""> <span>Logout</span>
-                </a>
+                <form action="{{ route('logout') }}" method="Post" >
+                    @csrf
+                    <button type="submit" class="logout">
+                        <img src="{{ asset('img/logout.svg') }}" alt=""><span>Logout</span>
+                    </button>
+                </form>
             </li>
         </ul>
     </div>

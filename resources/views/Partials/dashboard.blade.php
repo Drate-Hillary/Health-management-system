@@ -3,7 +3,7 @@
 @section('content')
 
 <!-- Dashboard Section -->
-<h1>Welcome, [Patient Name]</h1>
+<h1>Welcome, {{ Auth('patient')->user()->name }}</h1>
 <div class="dashboard-grid">
     <div class="card">
         <h3>Upcoming Appointments</h3>
