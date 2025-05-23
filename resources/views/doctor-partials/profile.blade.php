@@ -13,14 +13,12 @@
                 <div class="form-group">
                     <label for="specialty">Specialty</label>
                     <div class="custom-dropdown">
-                        <input type="text" id="specialty-display" class="specialty-display" placeholder="Select Specialty" readonly aria-describedby="specialty-help">
-                        <input type="hidden" id="specialty" name="specialty" value="{{ old('specialty', $doctor->specialty ?? '') }}" required>
+                        <input type="text" id="specialty" class="specialty" placeholder="Select Specialty" readonly aria-describedby="specialty-help">
                         <button type="button" class="dropdown-toggle" aria-expanded="false" aria-controls="specialty-list">
-                            <span class="sr-only">Toggle Specialty List</span>
                             <img src="{{ asset('img/down.svg') }}" alt="">
                         </button>
                         <ul id="specialty-list" class="choices" aria-hidden="true">
-                            <li data-value="">Select Specialty</li>
+                            <li data-value="" disabled>Select Specialty</li>
                             <li data-value="Cardiology">Cardiology</li>
                             <li data-value="Dermatology">Dermatology</li>
                             <li data-value="Endocrinology">Endocrinology</li>

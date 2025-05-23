@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('name');
             $table->integer('age');
             $table->string('gender');
-            $table->text('medical_history');
             $table->string('email')->unique();
             $table->string('phone');
             $table->timestamps();

@@ -21,9 +21,10 @@
     <!-- Sidebar Navigation -->
     <div class="sidebar">
         <div class="logo">
-            <img src="{{ asset('storage/doctors/'.auth('doctor')->user()->profile_image ) }}" alt="">
+            <img src="{{ asset('img/user.svg') }}" alt="">
             <h2>{{ auth('doctor')->user()->specialty }}</h2>
         </div>
+        <hr>
         <ul>
             <div class="scrollable">
                 <li>
@@ -33,13 +34,13 @@
                 </li>
 
                 <li>
-                    <a href="{{ route('/doctor-partials/dashboard') }}" class="{{ request()->routeIs('doctor-partials.dashboard') ? 'active' : '' }}" >
+                    <a href="{{ route('/doctor-partials/register') }}" class="{{ request()->routeIs('doctor-partials.register') ? 'active' : '' }}" >
                         <img src="{{ asset('img/register.svg') }}" alt=""> <span>Register Patient</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="{{ route('/doctor-partials/patient-records') }}" class="{{ request()->routeIs('doctor-partials.patient-rcords') ? 'active' : '' }}">
+                    <a href="{{ route('/doctor-partials/patient-records') }}" class="{{ request()->routeIs('doctor-partials.patient-records') ? 'active' : '' }}">
                         <img src="{{ asset('img/records.svg') }}" alt=""> <span>Patient Records</span>
                     </a>
                 </li>

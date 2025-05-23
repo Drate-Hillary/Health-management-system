@@ -15,7 +15,7 @@
     --border-color: rgba(5, 3, 1, 0.2);
     --hover-button-bg: #27251f;
     --reddish-color: #dc3545;
-    --greenish-color: #4ade80;
+    --color-green-300: oklch(87.1% 0.15 154.449);
     --primary-btn-bg: #28a745;
     --primary-btn-hover: #218838;
 }
@@ -34,7 +34,7 @@ h1 {
 
 /* Success Message */
 .success-message {
-    background: var(--greenish-color);
+    background: #befbbe;
     color: var(--font-color);
     padding: clamp(10px, 1.5vw, 12px);
     border-radius: 4px;
@@ -52,6 +52,20 @@ h1 {
 .success-message[style*="display: flex"] {
     transform: translateY(0);
     opacity: 1;
+}
+
+.error-messages {
+    background-color: #f8d7da;
+    color: #bb323f;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+.error-messages li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 
 /* Profile Form */
@@ -80,6 +94,7 @@ h1 {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    position: relative;
 }
 
 #profile-form label {
@@ -99,6 +114,35 @@ h1 {
     transition: border-color 0.3s ease;
     font-weight: 500;
 }
+
+.form-group a{
+    background-color: var(--sidebar-a-color);
+    width: 40px;
+    height: 40px;
+    border-left: 1px solid var(--border-color);
+    position: absolute;
+    right: 0;
+    margin-top: 1.8rem;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    transition:  background-color 0.4s ease;
+}
+
+.form-group a:hover{
+    background-color: var(--white-color);
+    border: 1px solid var(--border-color);
+}
+
+.form-group a::after{
+    content: url('/img/create.svg');
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
+
+
 
 #profile-form input:focus,
 #profile-form textarea:focus {
@@ -199,6 +243,76 @@ h1 {
 }
 
 /* Custom Dropdown */
+
+/* Custom Dropdown for Gender */
+#profile-form .form-group .custom-dropdown {
+    position: relative;
+    width: 100%;
+}
+
+#profile-form .form-group .custom-dropdown input {
+    padding-right: 2.7rem; /* Space for toggle button */
+    background-color: var(--card-bg);
+    cursor: default;
+}
+
+#profile-form .form-group .custom-dropdown .dropdown-toggle {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+#profile-form .form-group .custom-dropdown .dropdown-toggle img {
+    width: 1.2rem;
+    height: 1.2rem;
+}
+
+#profile-form .form-group .custom-dropdown .choices {
+    display: none;
+    position: absolute;
+    top: 2.5rem;
+    right: 0;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    box-shadow: 0 2px 4px var(--box-shadow);
+    z-index: 1000;
+    list-style: none;
+    margin: 5px 0 0 0;
+    padding: 0;
+    max-height: 150px;
+    max-width: 200px;
+}
+
+#profile-form .form-group .custom-dropdown .choices.active {
+    display: block;
+}
+
+#profile-form .form-group .custom-dropdown .choices li {
+    padding: clamp(8px, 1.2vw, 10px);
+    font-size: clamp(0.85rem, 1.7vw, 0.9rem);
+    color: var(--font-color);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    font-weight: 500;
+}
+
+#profile-form .form-group .custom-dropdown .choices li:hover,
+#profile-form .form-group .custom-dropdown .choices li:focus {
+    background-color: var(--sidebar-a-color);
+}
+
+#profile-form .form-group .custom-dropdown .choices li[disabled] {
+    color: #999;
+    cursor: default;
+    background-color: transparent;
+}
+
 .custom-dropdown {
     position: relative;
     width: 100%;
@@ -243,7 +357,8 @@ h1 {
     position: absolute;
     top: 100%;
     right: 0;
-    width: 250px; /* Custom width for choices */
+    width: 250px;
+    /* Custom width for choices */
     max-height: 200px;
     overflow-y: auto;
     background-color: #fff;

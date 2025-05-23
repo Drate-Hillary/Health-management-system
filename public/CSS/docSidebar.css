@@ -16,6 +16,7 @@
     --border-color: rgba(5, 3, 1, 0.2);
     --hover-button-bg: #27251f;
     --color-blue-700: oklch(48.8% 0.243 264.376);
+    --color-gray-400: oklch(70.7% 0.022 261.325);
 }
 
 body {
@@ -43,8 +44,16 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    gap: 3px;
-    margin-top: -10px;
+    gap: 5px;
+    margin-top: -6px;
+}
+
+hr{
+    border: none;
+    height: 1px;
+    width: 100%;
+    background-color: var(--color-gray-400);
+    margin-bottom: 4px;
 }
 
 .logo h2 {
@@ -54,8 +63,10 @@ body {
 }
 
 .logo img{
-    height: 80px;
+    margin-top: 9px;
+    height: 90px;
     aspect-ratio: 1/1;
+    border: 1px solid var(--sidebar-a-color);
     border-radius: 50%;
 }
 
@@ -82,18 +93,19 @@ body {
 
 .sidebar .scrollable{
     flex: 0 1 auto;
-    max-height: 280px;
+    max-height: 260px;
     overflow-y: auto;
     border-radius: 5px;
     padding: 5px;
+    box-shadow: inset 0 6px 10px -8px var(--box-shadow);
 }
 
 .sidebar .scrollable::-webkit-scrollbar {
-    width: 4px;
+    width: 2px;
 }
 
 .sidebar .scrollable::-webkit-scrollbar-track {
-    background-color: var(--color-gray-400);
+    background-color: var(--sidebar-bg);
     border-radius: 10px;
 }
 
@@ -102,12 +114,8 @@ body {
     border-radius: 10px;
 }
 
-.sidebar .scrollable:hover, .sidebar .scrollable:active{
-    box-shadow: 0 2px 4px var(--box-shadow);
-}
-
 .sidebar ul li {
-    margin: 5px 0;
+    margin: 3px 0;
     cursor: pointer;
 }
 
@@ -121,13 +129,19 @@ body {
     color: var(--font-color);
 }
 
+.sidebar ul li a span{
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
 .sidebar ul li form {
     width: 100%;
-    margin-top: 5px;
+    margin-top: 8px;
 }
 
 .sidebar ul li form .logout {
     width: 100%;
+    height: 3rem;
     display: flex;
     padding: 5px;
     align-items: center;
@@ -159,7 +173,11 @@ body {
     margin-right: 10px;
 }
 
-.sidebar ul li a:hover, .sidebar ul li a.active {
+.sidebar ul li a.active {
+    background-color: var(--sidebar-a-color);
+}
+
+.sidebar ul li a:hover{
     background-color: var(--sidebar-a-color);
 }
 

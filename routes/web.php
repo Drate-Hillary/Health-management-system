@@ -2,6 +2,7 @@
 
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\DocController\PatientRegistrationController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [LoginController::class, 'showLoginForm'])->name('login');
@@ -54,6 +55,23 @@ Route::middleware(['auth:doctor'])->group(function () {
         );
     })->name('/doctor-partials/dashboard');
 
+    
+    //Patient Registration Controller
+    Route::get('/doctor-partials/register', function () {
+        return view('doctor-partials.register');
+    })->name('/doctor-partials/register');
+    //Generate patient id
+    Route::get(
+        '/docctor-partials/register',
+        [PatientRegistrationController::class, 'generateID']
+    )->name('patient.generateID');
+    //Register a patient
+    Route::post(
+        '/doctor-partials/register',
+        [PatientRegistrationController::class, 'register']
+    )->name('patients.register');
+
+
     Route::get('/doctor-partials/appointment', function () {
         return view('doctor-partials.appointment');
     })->name('/doctor-partials/appointment');
@@ -77,5 +95,4 @@ Route::middleware(['auth:doctor'])->group(function () {
     Route::get('/doctor-partials/reporting', function () {
         return view('doctor-partials.reporting');
     })->name('/doctor-partials/reporting');
-
 });
