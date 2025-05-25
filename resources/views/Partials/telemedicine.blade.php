@@ -2,7 +2,6 @@
 
 @section('content')
 
-<h1>Telemedicine</h1>
 <div class="chat-container">
     <div class="chat-header">
         <h2>Chat with your doctor</h2>

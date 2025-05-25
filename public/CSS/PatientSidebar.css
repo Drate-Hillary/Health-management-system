@@ -153,6 +153,18 @@ body {
     border-radius: 10px;
 }
 
+.details{
+    position: absolute;
+    right: 2rem;
+}
+
+.details img {
+    background: var(--box-shadow);
+    padding: 5px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
 /* Media Queries */
 
 /* Below 768px: Show only icons, expand on hover */

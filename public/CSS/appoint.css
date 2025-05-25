@@ -6,20 +6,22 @@
 }
 
 :root {
-    --sidebar-bg: #fff;
-    --white-color: #f4f5f0;
-    --sidebar-a-color: #eceded;
-    --font-color: #0e0c0a;
-    --box-shadow: rgba(5, 3, 1, 0.15);
-    --card-bg: #fdfcfc;
-    --border-color: rgba(5, 3, 1, 0.2);
-    --hover-button-bg: #27251f;
-    --reddish-color: #dc3545;
-    --greenish-color: rgba(211, 250, 209, 0.7);
-    --primary-btn-bg: #c2f8c9;
-    --primary-btn-hover: #218838;
-    --color-red-200: oklch(88.5% 0.062 18.334);
-    --color-green-200: oklch(92.5% 0.084 155.995);
+    --background-body: #f0f2f5;
+    --background-container: #fff;
+    --background-header: #f9f9f9;
+    --background-status-completed: #e0f7e9;
+    --border-color: #ddd;
+    --border-search: #ccc;
+    --border-status-completed: #a5d6a7;
+    --text-doctor-name: #1a0dab;
+    --text-email: #606060;
+    --text-status-completed: #26722a;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --light-blue-border: rgba(149, 149, 250, 0.2);
+    --blue-font: #1306a0;
+    --pending-bg: #f8d7da;
+    --pending-font-color: rgb(151, 67, 67);
+    --color-indigo-500: oklch(58.5% 0.233 277.117);
 }
 
 body {
@@ -28,132 +30,301 @@ body {
     background-color: var(--white-color);
 }
 
-h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: #2c3e50;
+.appointment-wrapper{
+    margin-top: 4rem;
 }
 
-h2 {
-    font-size: 20px;
-    margin-bottom: 15px;
-    color: #2c3e50;
+.app-btn{
+    padding: 5px;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 5px;
+    background-color: var(--light-blue-border);
+    border: 1px solid var(--light-blue-border);
+    color: var(--blue-font);
+    cursor: pointer;
+    position: absolute;
+    top: -1.5rem;
+    right: 2rem;
 }
 
-/* Table Container */
-.table-container {
-    overflow-x: auto;
+.header {
+    padding: 13px;
+    background-color: var(--background-container);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    position: relative;
 }
 
-/* Table Styles */
-#appointment-table {
+.header h1{
+    position: absolute;
+    left: 0;
+}
+
+.search-container {
+    position: relative;
+    display: inline-block;
+}
+
+.search-container img {
+    position: absolute;
+    top: 30%;
+    transform: translateY(-25%);
+    left: 0.5rem;
+    pointer-events: none;
+    height: 1.3rem;
+    width: 1.3rem;
+}
+
+.search-bar {
+    padding: 7px;
+    width: 200px;
+    max-width: 100%;
+    border: 1px solid var(--border-search);
+    border-radius: 8px;
+    outline: none;
+    padding-left: 36px;
+    box-sizing: border-box;
+}
+
+.search-bar:focus{
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+    border-color: var(--blue-font);
+}
+
+.table-container{
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+table {
     width: 100%;
     border-collapse: collapse;
-    background-color: #fff;
+    table-layout: auto;
 }
 
-#appointment-table th,
-#appointment-table td {
-    padding: 12px;
+th,
+td {
+    padding: 10px;
     text-align: left;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid var(--border-color);
+    padding-left: 30px;
 }
 
-#appointment-table th {
-    background-color: #dfeff9;
-    color: var(--font-color);
+th {
+    background-color: var(--background-header);
+}
+
+.active-filters {
+    padding: 0.7rem;
+    color: black;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.active-filters span {
+    background-color: rgb(229, 242, 251);
+    padding: 5px;
+    color: var(--blue-font);
+    border-radius: 5px;
+}
+
+.active-filters span.completed {
+    background-color: var(--background-status-completed);
+    color: var(--text-status-completed);
+}
+
+.active-filters span.pending {
+    background-color: var(--pending-bg);
+    color: var(--pending-font-color);
+}
+
+.profile-pic {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 10px;
+    vertical-align: middle;
+    object-fit: cover;
+}
+
+.doctor-info {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.doctor-info p {
+    margin: 0;
+    line-height: 1.2;
+}
+
+.doctor-info p:first-child {
+    font-size: 1rem;
+    color: var(--text-doctor-name);
     font-weight: bold;
 }
 
-#appointment-table tr:hover {
-    background-color: #f5f5f5;
+.doctor-info p:last-child {
+    color: var(--text-email);
+    font-size: 0.9em;
 }
 
-#appointment-table td {
-    color: #2c3e50;
-}
-
-/* Button Styles */
-.btn {
-    padding: 8px 12px;
-    border: none;
+.time-date {
+    display: inline-block;
+    vertical-align: middle;
+    place-items: center;
+    background-color: var(--light-blue-border);
+    color: var(--blue-font);
+    padding: 5px;
     border-radius: 5px;
-    cursor: pointer;
-    font-size: 14px;
-    margin-right: 5px;
+    border: 1px solid var(--light-blue-border);
 }
 
-.btn-start {
-    background-color: #2ecc71;
-    color: #fff;
+.time-date p {
+    margin: 0;
+    font-size: 0.75rem;
+    font-weight: 500;
 }
 
-.btn-start:hover {
-    background-color: #27ae60;
+.status {
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    display: inline-block;
+    font-weight: 500;
 }
 
-.btn-cancel {
-    background-color: #e74c3c;
-    color: #fff;
+.completed {
+    background-color: var(--background-status-completed);
+    color: var(--text-status-completed);
+    border: 1px solid var(--border-status-completed);
 }
 
-.btn-cancel:hover {
-    background-color: #c0392b;
+.pending {
+    background-color: var(--pending-bg);
+    color: var(--pending-font-color);
+    border: 1px solid var(--pending-font-color);
 }
 
-/* Responsive Table */
+/* Media Queries for Responsiveness */
 @media (max-width: 768px) {
-    .main-content {
-        margin-left: 0;
+
+    .header {
+        padding: 10px;
+        gap: 10px;
+    }
+
+    .search-bar {
+        width: 100%;
+        padding: 0.5rem;
+        padding-left: 2.2rem;
+    }
+
+    th,
+    td {
+        padding: 3px;
+        padding-left: 15px;
+        font-size: 0.9rem;
+    }
+
+    tbody {
+        margin: 1rem;
+    }
+
+    .profile-pic {
+        width: 40px;
+        height: 40px;
+    }
+
+    .doctor-info p:first-child {
+        font-size: 0.9rem;
+    }
+
+    .doctor-info p:last-child {
+        font-size: 0.8rem;
+    }
+
+    .time-date p {
+        font-size: 0.8rem;
+    }
+
+    .status {
+        font-size: 0.8rem;
+        padding: 4px 8px;
+    }
+
+    .active-filters {
+
+        font-size: 12px;
+    }
+
+    .table-container {
+        overflow-x: auto;
         width: 100%;
     }
 
-    #appointment-table {
-        display: block;
-    }
-
-    #appointment-table thead {
-        display: none;
-    }
-
-    #appointment-table tbody,
-    #appointment-table tr {
-        display: block;
-    }
-
-    #appointment-table td {
-        display: block;
-        text-align: right;
-        position: relative;
-        padding-left: 50%;
-        border-bottom: none;
-    }
-
-    #appointment-table td:before {
-        content: attr(data-label);
-        position: absolute;
-        left: 12px;
-        font-weight: bold;
-        color: #2c3e50;
-    }
-
-    #appointment-table td:last-child {
-        border-bottom: 1px solid #ddd;
-        padding-bottom: 15px;
-    }
-
-    .btn {
-        width: 100%;
-        margin: 5px 0;
+    table {
+        min-width: 600px;
     }
 }
 
 @media (max-width: 480px) {
-    .table-container {
-        padding: 0;
+
+    th,
+    td {
+        padding: 6px;
+        padding-left: 10px;
+        font-size: 0.8rem;
     }
 
-    #appointment-table td {
-        padding-left: 40%;
+    .profile-pic {
+        width: 30px;
+        height: 30px;
+        margin-right: 5px;
+    }
+
+    .doctor-info p:first-child {
+        font-size: 0.8rem;
+    }
+
+    .doctor-info p:last-child {
+        font-size: 0.7rem;
+    }
+
+    .time-date {
+        padding: 5px;
+    }
+
+    .time-date p {
+        font-size: 0.7rem;
+    }
+
+    .status {
+        font-size: 0.7rem;
+        padding: 3px 6px;
+    }
+
+    .active-filters {
+        font-size: 11px;
+        padding: 6px;
+    }
+
+    .active-filters span {
+        padding: 3px;
+    }
+
+    /* Ensure table remains scrollable */
+    .table-container {
+        overflow-x: auto;
+    }
+
+    table {
+        min-width: 500px;
+        /* Slightly smaller minimum width for very small screens */
     }
 }

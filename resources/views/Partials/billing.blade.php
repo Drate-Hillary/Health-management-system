@@ -2,7 +2,6 @@
 
 @section('content')
 
-<h1>Billing</h1>
 <div class="billing-container">
 
     <div class="billing-summary">

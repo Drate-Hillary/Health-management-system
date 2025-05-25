@@ -75,6 +75,9 @@
 
     <!-- Main Content -->
     <div class="main-content">
+        <div class="details">
+            <img src="{{ asset('img/card.svg') }}" alt="">
+        </div>
         @yield('content')
     </div>
 
