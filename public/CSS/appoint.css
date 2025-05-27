@@ -24,6 +24,36 @@
     --color-indigo-500: oklch(58.5% 0.233 277.117);
 }
 
+.alert {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1100;
+    animation: fadeInOut 4s ease-in-out forwards;
+}
+
+.alert-success {
+    background-color: #a5d6a7;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0; transform: translateY(-20px); }
+    10% { opacity: 1; transform: translateY(0); }
+    90% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(-20px); }
+}
+
 body {
     display: flex;
     min-height: 100vh;
@@ -46,6 +76,7 @@ body {
     position: absolute;
     top: -1.5rem;
     right: 2rem;
+    text-decoration: none;
 }
 
 .header {
@@ -115,6 +146,7 @@ td {
     border-bottom: 1px solid var(--border-color);
     padding-left: 30px;
 }
+
 
 th {
     background-color: var(--background-header);
@@ -209,6 +241,36 @@ th {
     background-color: var(--pending-bg);
     color: var(--pending-font-color);
     border: 1px solid var(--pending-font-color);
+}
+
+.edit-delete{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+button{
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.delete img{
+    cursor: pointer;
+}
+
+td.actions{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+td.actions form{
+    display: inline-block;
+    margin: 0;
+    cursor: pointer;
 }
 
 /* Media Queries for Responsiveness */

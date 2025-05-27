@@ -20,8 +20,19 @@ class Patient extends Authenticatable
         'email',
         'phone',
     ];
-    
-    public function getAuthPassword(){
+
+    public function getAuthPassword()
+    {
         return '';
+    }
+
+    public function getAuthIdentifierName()
+    {
+        return 'patient_id';
+    }
+
+    public function appointments()
+    {
+        return $this->hasMany(Appointment::class);
     }
 }

@@ -38,7 +38,7 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('/patients/appointment') }}" class="{{ request()->routeIs('partial.appointment') ? 'active' : '' }}">
+                <a href="{{ route('patients.appointment') }}" class="{{ request()->routeIs('partial.appointment') ? 'active' : '' }}">
                     <img src="{{ asset('img/calendar.svg') }}" alt=""> <span>Appointments</span>
                 </a>
             </li>

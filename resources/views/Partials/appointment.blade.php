@@ -3,6 +3,22 @@
 @section('content')
 
 <link rel="stylesheet" href="{{ asset('CSS/appoint.css') }}">
+
+@if (session('success'))
+<div class="alert alert-success">
+    {{ session('success') }}
+</div>
+@endif
+
+@if ($errors->any())
+<div class="alert alert-danger">
+    <ul>
+        @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
 <!-- Appointments Section -->
 
 <div class="appointment-wrapper">
@@ -16,7 +32,7 @@
         <div class="filter">
             <img src="{{ asset('img/filter.svg') }}" alt="">
         </div>
-        <button class="app-btn">New Appointment</button>
+        <button href="{{ route('patients.appointment') }}" class="app-btn">New Appointment</button>
     </div>
 
     <div class="table-container">
@@ -26,87 +42,98 @@
                     <th class="active-filters" colspan="4">Active filters: <span class="completed">Completed</span> <span class="pending">Pending</span></th>
                 </tr>
                 <tr>
-                    <th>Patient</th>
+                    <th>Doctor</th>
                     <th>Date</th>
                     <th>Status</th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                @forelse($appointments as $appointment)
+                <tr data-status="{{ $appointment->status }}">
                     <td>
-                        <img src="https://images.unsplash.com/photo-1695392175234-2cd1b7eca108?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8cG9ydGFyaXR8ZW58MHx8MHx8fDA%3D"
+                        <img src="https://media.istockphoto.com/id/2193298525/photo/portrait-of-a-smiling-female-doctor-looking-at-camera.webp?a=1&b=1&s=612x612&w=0&k=20&c=34vKqLqRNTmfXKdHBSOlJePXvFgwBvUUqu8r1VA5nmI="
                             alt="Profile" class="profile-pic">
                         <div class="doctor-info">
-                            <p>Docteur Docteur</p>
-                            <p>vatsal@gmail.com</p>
+                            <p>{{ $appointment->doctor?->name }}</p>
+                            <p>{{ $appointment->doctor?->email }}</p>
                         </div>
                     </td>
                     <td>
                         <div class="time-date">
-                            <p cass="time">3:15 PM</p>
-                            <p class="date">23rd Apr, 2025</p>
+                            <p cass="time">{{ $appointment->appointment_time->format('h:i A') }}</p>
+                            <p class="date">{{ $appointment->appointment_date->format('jS M, Y') }}</p>
                         </div>
                     </td>
                     <td>
-                        <span class="status completed">Completed</span>
+                        <span class="status {{ $appointment->status }}">{{ ucfirst($appointment->status) }}</span>
                     </td>
                     <td>
-                        <span class="edit"><img src="{{ asset('img/edit.svg') }}" alt=""></span>
-                        <span class="delete"><img src="{{ asset('img/delete.svg') }}" alt=""></span>
+                        <div class="edit-delete">
+                            <span><img src="{{ asset('img/edit.svg') }}" alt=""></span>
+
+                            <form action="{{ route('patients.appointment.destroy', ['appointment' => $appointment->id]) }}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="delete" >
+                                    <img src="{{ asset('img/delete.svg') }}" alt="">
+                                </button>
+                            </form>
+                        </div>
                     </td>
                 </tr>
-                <tr>
-                    <td>
-                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cG9ydHJhaXR8ZW58MHx8MHx8fDA%3D"
-                            alt="Profile" class="profile-pic">
-                        <div class="doctor-info">
-                            <p>Docteur Docteur</p>
-                            <p>vatsal@gmail.com</p>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="time-date">
-                            <p>5:15 PM</p>
-                            <p>16th Apr, 2025</p>
-                        </div>
-                    </td>
-                    <td>
-                        <span class="status pending">Pending</span>
-                    </td>
-                    <td>
-                        <span class="edit"><img src="{{ asset('img/edit.svg') }}" alt=""></span>
-                        <span class="delete"><img src="{{ asset('img/delete.svg') }}" alt=""></span>
-                    </td>
+
+                @empty
+                <tr colspan="4">
+                    <td>No Appointments Found</td>
                 </tr>
+
+                @endforelse
             </tbody>
         </table>
     </div>
 </div>
 
+
 <div class="form-container">
-    <form id="appointment-form">
-        <h1>Book Appointment</h1>
-        <label for="doctor">Select Doctor</label>
-        <select id="doctor" required>
-            <option value="">Choose a doctor</option>
-            <option value="dr-smith">Dr. Smith (Cardiologist)</option>
-            <option value="dr-jones">Dr. Jones (General Physician)</option>
-        </select>
+    <form action="{{  route('appointment.store') }}" method="post" id="appointment-form">
 
-        <div class="date-time">
-            <div class="input">
-                <label for="date">Date</label>
-                <input type="date" id="date" required>
-            </div>
+        <div class="head">
+            <h4>Book an Appointment</h4>
+            <img class="close" src="{{ asset('img/close.svg') }}" alt="">
+        </div>
 
-            <div class="input">
-                <label for="time">Time</label>
-                <input type="time" id="time" required>
+        <div class="content">
+            <label for="doctor_id">Select Doctor</label>
+            <select id="doctor_id" name="doctor_id" required>
+                <option value="">Choose a doctor</option>
+
+                @foreach ($doctors as $doctor)
+                <option
+                    value="{{ $doctor->doctor_id }}"
+                    {{  old('doctor_id') == $doctor->doctor_id ? 'selected' : '' }}>
+                    {{ $doctor->name }} ({{ $doctor->specialty }})
+                </option>
+                @endforeach
+
+            </select>
+
+            <div class="date-time">
+                <div class="input">
+                    <label for="appointment_date">Date</label>
+                    <input type="date" name="appointment_date" id="appointment_date" value="{{ old('appointment_date') }}" required>
+                </div>
+
+                <div class="input">
+                    <label for="appointment_time">Time</label>
+                    <input type="time" name="appointment_time" id="appointment_time" value="{{ old('appointment_time') }}" required>
+                </div>
             </div>
         </div>
 
-        <button type="submit" class="submit-btn">Book Appointment</button>
+        <button type="submit" class="submit-btn">
+            Book Appointment
+        </button>
     </form>
 </div>
 
@@ -114,9 +141,20 @@
     const appBtn = document.querySelector('.app-btn');
     const appointmentForm = document.getElementById('appointment-form');
     const formContainer = document.querySelector('.form-container');
+    const close = document.querySelector('.close');
     appBtn.addEventListener('click', () => {
         appointmentForm.style.display = appointmentForm.style.display = 'none' ? 'block' : 'none';
         formContainer.classList.add('active');
+    });
+
+    close.addEventListener('click', () => {
+        formContainer.classList.remove('active');
+    });
+
+    formContainer.addEventListener('click', (e) => {
+        if (e.target === this) {
+            this.classList.remove('active');
+        }
     });
 </script>
 

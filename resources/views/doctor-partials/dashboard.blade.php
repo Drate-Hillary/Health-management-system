@@ -6,7 +6,7 @@
 <div class="dashboard-grid">
     <div class="card">
         <h3>Today’s Appointments</h3>
-        <p>5 Appointments Scheduled</p>
+        <p>{{ $combinedCount }} Appointment{{ $combinedCount != 1 ? 's' : '' }} Scheduled</p>
         <a href="{{ route('/doctor-partials/appointment') }}">
             <button type="submit" >View Schedule</button>
         </a>

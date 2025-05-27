@@ -7,7 +7,7 @@
         <h1>Appointments</h1>
         <div class="search-container">
             <img src="{{ asset('img/search.svg') }}" alt="">
-            <input type="text" class="search-bar" placeholder="Search">
+            <input type="text" class="search-bar" placeholder="Search here...">
         </div>
         <div class="filter">
             <img src="{{ asset('img/filter.svg') }}" alt="">
@@ -27,54 +27,57 @@
                     <th>Action</th>
                 </tr>
             </thead>
+
             <tbody>
-                <tr>
+                @forelse($appointments as $appointment)
+                <tr data-status="{{ $appointment->status }}">
                     <td>
                         <img src="https://images.unsplash.com/photo-1695392175234-2cd1b7eca108?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8cG9ydGFyaXR8ZW58MHx8MHx8fDA%3D"
                             alt="Profile" class="profile-pic">
                         <div class="doctor-info">
-                            <p>Docteur Docteur</p>
-                            <p>vatsal@gmail.com</p>
+                            <p>{{ $appointment->patient?->name }}</p>
+                            <p>{{ $appointment->patient?->email }}</p>
                         </div>
                     </td>
                     <td>
                         <div class="time-date">
-                            <p cass="time">3:15 PM</p>
-                            <p class="date">23rd Apr, 2025</p>
+                            <p cass="time">{{ $appointment->appointment_time->format('h:i A') }}</p>
+                            <p class="date">{{ $appointment->appointment_date->format('jS M, Y') }}</p>
                         </div>
                     </td>
                     <td>
-                        <span class="status completed">Completed</span>
+                        <span class="status {{ $appointment->status }}">{{ ucfirst($appointment->status) }}</span>
                     </td>
                     <td>
-                        <span class="edit"><img src="{{ asset('img/edit.svg') }}" alt=""></span>
-                        <span class="delete"><img src="{{ asset('img/delete.svg') }}" alt=""></span>
+                        <div class="edit-delete">
+                            @if ($appointment->status == 'pending')
+
+                            <form action="{{ route('doctor.appointment.complete', $appointment) }}" method="post">
+                                @csrf
+                                <button type="submit" class="complete">
+                                    <img src="{{ asset('img/check.svg') }}" alt="">
+                                </button>
+                            </form>
+                            @endif
+
+                            <form action="" method="post">
+                                @csrf
+                                <button type="submit" class="delete">
+                                    <img src="{{ asset('img/delete.svg') }}" alt="">
+                                </button>
+                            </form>
+                        </div>
                     </td>
                 </tr>
+
+                @empty
                 <tr>
-                    <td>
-                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cG9ydHJhaXR8ZW58MHx8MHx8fDA%3D"
-                            alt="Profile" class="profile-pic">
-                        <div class="doctor-info">
-                            <p>Docteur Docteur</p>
-                            <p>vatsal@gmail.com</p>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="time-date">
-                            <p>5:15 PM</p>
-                            <p>16th Apr, 2025</p>
-                        </div>
-                    </td>
-                    <td>
-                        <span class="status pending">Pending</span>
-                    </td>
-                    <td>
-                        <span class="edit"><img src="{{ asset('img/edit.svg') }}" alt=""></span>
-                        <span class="delete"><img src="{{ asset('img/delete.svg') }}" alt=""></span>
-                    </td>
+                    <td colspan="4">No appointments found</td>
                 </tr>
+
+                @endforelse
             </tbody>
+
         </table>
     </div>
 </div>
